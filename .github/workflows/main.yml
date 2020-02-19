@@ -19,4 +19,4 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.2
 
     - name: Build and Publish Web App
-      run: msbuild dev/Template10.Services.SerializationService.sln /p:Configuration=Release
+      run: msbuild dev/CustomMayd.Services.Serialization.sln /p:Configuration=Release
