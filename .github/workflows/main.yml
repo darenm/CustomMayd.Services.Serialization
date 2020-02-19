@@ -17,5 +17,9 @@ jobs:
 #    - name: Setup NuGet
 #      uses: NuGet/setup-nuget@v1.0.2
 
+    - name: Restore packages
+      run: msbuild .\dev\CustomMayd.Services.Serialization\CustomMayd.Services.Serialization.sln -t:restore
+     
+
     - name: Build UWP app
       run: msbuild .\dev\CustomMayd.Services.Serialization\CustomMayd.Services.Serialization.sln /p:Configuration=Release /p:AppxBundlePlatforms="Any" /p:AppxPackageDir=".\AppxPackages" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload
