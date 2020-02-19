@@ -13,6 +13,7 @@ jobs:
 
     - name: Setup MSBuild Path
       uses: warrenbuckley/Setup-MSBuild@v1
+      
     - name: Setup VSTest Path
       uses: darenm/Setup-VSTest@release/v1
 
