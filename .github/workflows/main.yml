@@ -10,7 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Checkout code
-      run: echo Hello, world!
 
     - name: Setup MSBuild Path
       uses: warrenbuckley/Setup-MSBuild@v1
