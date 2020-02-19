@@ -229,6 +229,7 @@ ModelManifest.xml
 *.dll
 *.exe
 AppPackages/
+**/AppxPackages/*
 *.winmd
 *.pri
 *.vsix
@@ -267,3 +268,4 @@ HelixPayload/
 /test/MUXControlsTestApp/MSTest/MUXControlsTestApp_Test
 /test/MUXControlsTestApp/TAEF/MUXControlsTestApp_Test
 UnreliableTestReport.csv
+
