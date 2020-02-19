@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
+
+  <PropertyGroup>
+
+    <Title>CustomMayd Serialization Service</Title>
+    <PackageId>CustomMayd.Services.Serialization</PackageId>
+    <AssemblyName>CustomMayd.Services.Serialization</AssemblyName>
+    <Description>Handy Compression Serialization for WinRT. Part of Template 10, a Library of Helpers for UWP.</Description>
+    <RootNamespace>CustomMayd.Services</RootNamespace>
+
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+
+    <TargetFrameworks>uap10.0.17134</TargetFrameworks>
+    <PackageTags>Windows 10, Windows10, W10, UAP, UWP, WinRT, XAML, Template 10, CustomMayd, T10, Universal App, Windows Universal</PackageTags>
+    <RepositoryType></RepositoryType>
+    <RepositoryUrl>https://aka.ms/CustomMayd</RepositoryUrl>
+    <PackageIcon>NuGetLogo.png</PackageIcon>
+    <PackageProjectUrl>https://aka.ms/CustomMayd</PackageProjectUrl>
+    <Copyright>Jerry Nixon, Daren May</Copyright>
+    <Authors>Jerry Nixon, Daren May</Authors>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <FileVersion>1.0.0.0</FileVersion>
+    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Assets\NuGetLogo.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="4.7.1" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <VersionSuffix>D$([System.DateTime]::UtcNow.ToString(yyMMdd))-alpha</VersionSuffix>
+  </PropertyGroup>
+
+  <Target Name="CopyPackage" AfterTargets="Pack">
+    <Copy SourceFiles="$(OutputPath)$(PackageId).$(PackageVersion).nupkg" DestinationFolder="..\..\nuget" />
+  </Target>
+
+</Project>
