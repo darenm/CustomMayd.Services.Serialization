@@ -27,5 +27,5 @@ jobs:
       run: msbuild .\dev\CustomMayd.Services.Serialization\CustomMayd.Services.Serialization.sln /p:Configuration=Debug /p:AppxBundlePlatforms="x86|x64|ARM" /p:AppxPackageDir=".\AppxPackages" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload
       
     - name: VSTest
-      run: vstest.console.exe /Platform:x86 .\test\CustomMayd.Services.Serialization.Tests\CustomMayd.Services.Serialization.Tests\bin\x86\Debug\CustomMayd.Services.Serialization.Tests.build.appxrecipe
+      run: vstest.console.exe /Platform:x86 .\test\CustomMayd.Services.Serialization.Tests\bin\x86\Debug\CustomMayd.Services.Serialization.Tests.build.appxrecipe
 
