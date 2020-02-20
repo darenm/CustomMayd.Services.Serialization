@@ -1,0 +1,47 @@
+name: Release CI UWP
+
+on:
+  push:
+    branches: 
+      - 'releases/**'
+      - '!releases/**-alpha'
+      
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup MSBuild Path
+      uses: warrenbuckley/Setup-MSBuild@v1
+      
+    - name: Setup VSTest Path
+      uses: darenm/Setup-VSTest@releases/v1
+
+    - name: Restore packages
+      run: msbuild .\dev\CustomMayd.Services.Serialization\CustomMayd.Services.Serialization.sln -t:restore
+
+    - name: Debug Build UWP app
+      run: msbuild .\dev\CustomMayd.Services.Serialization\CustomMayd.Services.Serialization.sln /p:Configuration=Release       
+
+    - name: VSTest
+      run: vstest.console.exe /Platform:x86 .\test\CustomMayd.Services.Serialization.Tests\bin\x86\Debug\CustomMayd.Services.Serialization.Tests.build.appxrecipe
+
+    - name: Upload artfacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: NuGet Packages
+        path: .\nuget
+        
+    - name: List nuget packages
+      run: |
+        dir .\nuget
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+      with:
+        nuget-api-key: ${{ secrets.NuGetAPIKey }}
+    - run: nuget push .\nuget\CustomMayd.Services.Serialization*.nupkg -Source https://api.nuget.org/v3/index.json -NoSymbols
