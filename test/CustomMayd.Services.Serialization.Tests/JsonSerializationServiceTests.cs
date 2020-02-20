@@ -131,5 +131,11 @@ namespace CustomMayd.Services.Serialization.Tests
             Assert.IsTrue(result);
             Assert.IsNotNull(serializerResult);
         }
+
+        [TestMethod]
+        public void Json_DeliberateFail()
+        {
+            throw new InvalidOperationException();
+        }
     }
 }
