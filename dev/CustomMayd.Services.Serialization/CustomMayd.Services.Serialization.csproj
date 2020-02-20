@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <VersionSuffix>D$([System.DateTime]::UtcNow.ToString(yyMMddmm))-alpha</VersionSuffix>
+    <VersionSuffix>D$([System.DateTime]::UtcNow.ToString(yyMMddhhmm))-alpha</VersionSuffix>
   </PropertyGroup>
 
   <Target Name="CopyPackage" AfterTargets="Pack">
