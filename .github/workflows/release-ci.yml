@@ -28,7 +28,7 @@ jobs:
       run: msbuild .\dev\CustomMayd.Services.Serialization\CustomMayd.Services.Serialization.sln /p:Configuration=Release       
 
     - name: VSTest
-      run: vstest.console.exe /Platform:x86 .\test\CustomMayd.Services.Serialization.Tests\bin\x86\Debug\CustomMayd.Services.Serialization.Tests.build.appxrecipe
+      run: vstest.console.exe /Platform:x86 .\test\CustomMayd.Services.Serialization.Tests\bin\x86\Release\CustomMayd.Services.Serialization.Tests.build.appxrecipe
 
     - name: Upload artfacts
       uses: actions/upload-artifact@v1
