@@ -17,9 +17,6 @@ jobs:
     - name: Setup VSTest Path
       uses: darenm/Setup-VSTest@releases/v1
 
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
-
     - name: Restore packages
       run: msbuild .\dev\CustomMayd.Services.Serialization\CustomMayd.Services.Serialization.sln -t:restore
 
@@ -29,3 +26,8 @@ jobs:
     - name: VSTest
       run: vstest.console.exe /Platform:x86 .\test\CustomMayd.Services.Serialization.Tests\bin\x86\Debug\CustomMayd.Services.Serialization.Tests.build.appxrecipe
 
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+      with:
+        nuget-api-key: ${{ secrets.NuGetAPIKey }}
+    - run: nuget push .\nuget\CustomMayd.Services.Serialization.1.0.0-D200220-alpha.nupkg -Source https://api.nuget.org/v3/index.json
