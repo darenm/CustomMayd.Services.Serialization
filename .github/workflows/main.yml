@@ -40,4 +40,4 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.2
       with:
         nuget-api-key: ${{ secrets.NuGetAPIKey }}
-    - run: nuget push .\nuget\CustomMayd.Services.Serialization*.nupkg -Source https://api.nuget.org/v3/index.json
+    - run: nuget push .\nuget\CustomMayd.Services.Serialization*.nupkg -Source https://api.nuget.org/v3/index.json -n true
