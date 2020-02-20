@@ -26,6 +26,12 @@ jobs:
     - name: VSTest
       run: vstest.console.exe /Platform:x86 .\test\CustomMayd.Services.Serialization.Tests\bin\x86\Debug\CustomMayd.Services.Serialization.Tests.build.appxrecipe
 
+    - name: Upload artfacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: NuGet Packages
+        path: .\nuget
+
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
       with:
