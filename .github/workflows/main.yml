@@ -4,6 +4,9 @@ on:
   push:
     branches: 
       - master
+    paths-ignore:
+      # don't build when I update the actions
+      - '.github/**'
       
 jobs:
   build:
