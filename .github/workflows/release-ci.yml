@@ -5,7 +5,10 @@ on:
     branches: 
       - 'releases/**'
       - '!releases/**-alpha'
-      
+    paths-ignore:
+      # don't build when I update the actions
+      - '.github/**'
+    
 jobs:
   build:
 

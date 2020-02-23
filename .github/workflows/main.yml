@@ -4,6 +4,9 @@ on:
   push:
     branches: 
       - master
+    paths-ignore:
+      # don't build when I update the actions
+      - '.github/**'
       
 jobs:
   build:
@@ -16,9 +19,6 @@ jobs:
 
     - name: Setup MSBuild Path
       uses: warrenbuckley/Setup-MSBuild@v1
-      
-    - name: Setup VSTest Path
-      uses: darenm/Setup-VSTest@releases/v1
 
     - name: Restore packages
       run: msbuild .\dev\CustomMayd.Services.Serialization\CustomMayd.Services.Serialization.sln -t:restore
@@ -26,10 +26,13 @@ jobs:
     - name: Debug Build UWP app
       run: msbuild .\dev\CustomMayd.Services.Serialization\CustomMayd.Services.Serialization.sln /p:Configuration=Debug       
 
+    - name: Setup VSTest Path
+      uses: darenm/Setup-VSTest@releases/v1
+      
     - name: VSTest
       run: vstest.console.exe /Platform:x86 .\test\CustomMayd.Services.Serialization.Tests\bin\x86\Debug\CustomMayd.Services.Serialization.Tests.build.appxrecipe
 
-    - name: Upload artfacts
+    - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
         name: NuGet Packages
@@ -38,6 +41,13 @@ jobs:
     - name: List nuget packages
       run: |
         dir .\nuget
+        
+    - name: unlist previous alpha packages
+      uses: darenm/unlist-nuget@releases/v1
+      with:
+        NUGET_PACKAGE: CustomMayd.Services.Serialization
+        VERSION_REGEX: ^1.0.\d+-d(\d+)-alpha
+        NUGET_KEY: ${{secrets.NuGetUnlistAPIKey}}
 
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
