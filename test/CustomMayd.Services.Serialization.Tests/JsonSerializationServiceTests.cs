@@ -86,7 +86,6 @@ namespace CustomMayd.Services.Serialization.Tests
             Assert.IsNull(resultReminder);
         }
 
-
         [TestMethod]
         public void Json_TryDeserializeModel_Succeed()
         {
@@ -104,7 +103,6 @@ namespace CustomMayd.Services.Serialization.Tests
             Assert.IsInstanceOfType(resultReminder, typeof(Reminder));
         }
 
-
         [TestMethod]
         public void Json_TrySerializeModel_Fail()
         {
@@ -117,7 +115,6 @@ namespace CustomMayd.Services.Serialization.Tests
             Assert.IsFalse(result);
             Assert.IsNull(serializerResult);
         }
-
 
         [TestMethod]
         public void Json_TrySerializeModel_Succeed()
