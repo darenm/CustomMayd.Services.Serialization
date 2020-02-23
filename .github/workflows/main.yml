@@ -43,7 +43,7 @@ jobs:
         dir .\nuget
         
     - name: unlist previous alpha packages
-      uses: darenm/unlist-nuget@releases/v1
+      uses: darenm/unlist-nuget@v1
       with:
         NUGET_PACKAGE: CustomMayd.Services.Serialization
         VERSION_REGEX: ^1.0.\d+-d(\d+)-alpha
