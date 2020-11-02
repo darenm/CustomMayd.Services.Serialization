@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Setup MSBuild Path
-      uses: warrenbuckley/Setup-MSBuild@v1
+      uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Restore packages
       run: msbuild .\dev\CustomMayd.Services.Serialization\CustomMayd.Services.Serialization.sln -t:restore
@@ -27,7 +27,7 @@ jobs:
       run: msbuild .\dev\CustomMayd.Services.Serialization\CustomMayd.Services.Serialization.sln /p:Configuration=Debug       
 
     - name: Setup VSTest Path
-      uses: darenm/Setup-VSTest@releases/v1
+      uses: darenm/Setup-VSTest@releases/v1.1
       
     - name: VSTest
       run: vstest.console.exe /Platform:x86 .\test\CustomMayd.Services.Serialization.Tests\bin\x86\Debug\CustomMayd.Services.Serialization.Tests.build.appxrecipe
