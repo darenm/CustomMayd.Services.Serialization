@@ -27,7 +27,7 @@ jobs:
       run: msbuild .\dev\CustomMayd.Services.Serialization\CustomMayd.Services.Serialization.sln /p:Configuration=Debug       
 
     - name: Setup VSTest Path
-      uses: darenm/Setup-VSTest@releases/v1.1
+      uses: darenm/Setup-VSTest@/v1.1
       
     - name: VSTest
       run: vstest.console.exe /Platform:x86 .\test\CustomMayd.Services.Serialization.Tests\bin\x86\Debug\CustomMayd.Services.Serialization.Tests.build.appxrecipe
